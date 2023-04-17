@@ -7,7 +7,7 @@ function Home() {
     <div className="App">
       <header className="App-header">
       <Typography component='div' variant='h2' color="textPrimary">
-            Welcome!
+            Hello, World!
         </Typography>
         <img src={logo} className="App-logo" alt="logo"/>
         <Typography component='div' variant='h2' color="textPrimary">
