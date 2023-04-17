@@ -33,7 +33,7 @@ const theme = createTheme({
 
 function App() {
   return (
-    <Router>
+    <Router basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <Navbar />
           <Routes>
