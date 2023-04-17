@@ -8808,6 +8808,13 @@
     "@remix-run/router" "1.4.0"
     "react-router" "6.9.0"
 
+"react-router-hash-link@^2.4.3":
+  "integrity" "sha512-NU7GWc265m92xh/aYD79Vr1W+zAIXDWp3L2YZOYP4rCqPnJ6LI6vh3+rKgkidtYijozHclaEQTAHaAaMWPVI4A=="
+  "resolved" "https://registry.npmjs.org/react-router-hash-link/-/react-router-hash-link-2.4.3.tgz"
+  "version" "2.4.3"
+  dependencies:
+    "prop-types" "^15.7.2"
+
 "react-router@6.9.0":
   "integrity" "sha512-51lKevGNUHrt6kLuX3e/ihrXoXCa9ixY/nVWRLlob4r/l0f45x3SzBvYJe3ctleLUQQ5fVa4RGgJOTH7D9Umhw=="
   "resolved" "https://registry.npmjs.org/react-router/-/react-router-6.9.0.tgz"

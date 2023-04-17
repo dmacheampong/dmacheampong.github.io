@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import About from './pages/About'
 import Projects from './pages/Projects'
@@ -33,7 +33,7 @@ const theme = createTheme({
 
 function App() {
   return (
-    <HashRouter basename={process.env.PUBLIC_URL}>
+    <Router basename={process.env.PUBLIC_URL}>
       <ThemeProvider theme={theme}>
         <Navbar />
           <Routes>
@@ -44,7 +44,7 @@ function App() {
           </Routes>
           <Footer />
       </ThemeProvider>
-    </HashRouter>
+    </Router>
   );
 }
 
