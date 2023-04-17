@@ -17,7 +17,9 @@ function Projects() {
         fetch(apiUrl)
             .then((res) => res.json())
             .then((repos) => {
-                setAppState({ loading: false, repos: repos.sort((a,b) => (a.created_at < b.created_at) ? 1: (a.created_at > b.created_at) ? -1: 0)});
+                let repoList = repos.sort((a,b) => (a.created_at < b.created_at) ? 1: (a.created_at > b.created_at) ? -1: 0);
+                repoList = repoList.filter((repo) => repo.name !== 'dmacheampong.github.io');
+                setAppState({ loading: false, repos: repoList});
             });
     }, [setAppState])
     return (
