@@ -38,9 +38,9 @@ function App() {
         <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/dmacheampong.github.io/about' element={<About />} />
-            <Route path='/dmacheampong.github.io/projects' element={<Projects />} />
-            <Route path='/dmacheampong.github.io/contact' element={<Contact />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='/contact' element={<Contact />} />
           </Routes>
           <Footer />
       </ThemeProvider>
