@@ -1,8 +1,8 @@
 {
-  "name": "my_site",
+  "name": "dmacheampong",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dmacheampong.github.io/dmacheampong.github.io/#",
+  "homepage": "/dmacheampong.github.io/#",
   "dependencies": {
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
