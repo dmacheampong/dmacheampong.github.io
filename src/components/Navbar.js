@@ -1,14 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { HashLink as Link} from "react-router-hash-link";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import Menu from "@mui/material/Menu"
-import MenuItem from "@mui/material/MenuItem";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import MenuIcon from "@mui/icons-material/Menu";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button";
 import logo from '../assets/logo.png';
 import { makeStyles } from "@material-ui/core/styles";
+
+const drawerWidth = 240;
 
 const pages = [
     {
@@ -37,24 +43,54 @@ const useStyles = makeStyles((theme) => (
     }));
 
 function Navbar() {  
+    const { window } = Window;
+    const [mobileOpen, setMobileOpen] = useState(false);
+
     const classes = useStyles();
+    
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
+    const drawer = (
+        <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center'}}>
+            <Box bgcolor='secondary.main'>
+                <img src={logo} alt="Logo" width={100}/>
+            </Box>
+            <Divider />
+            <List>
+                {pages.map((page) => (
+                    <ListItem key={page.title}>
+                    <Button key={page.title} component={Link} to={page.url} sx={{ my: 2, display: "block", ':hover': {bgcolor: 'secondary.main', color: 'white'}}}>
+                            <Typography color='textPrimary'>
+                                {page.title}
+                            </Typography>
+                        </Button>
+                    </ListItem>
+                ))}
+            </List>
+        </Box>
+    );
+    
+    const container = window !== undefined ? () => window().document.body : undefined;
+
     return (
-        <React.Fragment>
+            <Box sx={{display: 'flex'}}>
             <AppBar position="sticky" className={classes.appBar} color='secondary'>
                 <Toolbar>
-                    <Menu>
-                        {pages.map((page) => (
-                           <MenuItem key={page.title}>
-                                <Typography textAlign='center'>
-                                    {page.title}
-                                </Typography>
-                           </MenuItem> 
-                        ))}
-                    </Menu> 
+                    <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    edge="start"
+                    onClick={handleDrawerToggle}
+                    sx={{ mr: 2, display: { sm: 'none'}}}
+                    >
+                        <MenuIcon />
+                    </IconButton>
                     <img src={logo} alt="Logo" width={100}/>
                     <Box sx={{ flexGrow: 1, display : {xs: "none", md: "flex"}}}>
                         {pages.map((page) => (
-                            <Button key={page.title} component={Link} to={page.url} sx={{ my: 2, display: "block"}}>
+                            <Button key={page.title} component={Link} to={page.url} sx={{ my: 2, display: "block", ':hover': {bgcolor: 'primary.main', color: 'white'}}}>
                                 <Typography color='textPrimary'>
                                     {page.title}
                                 </Typography>
@@ -64,7 +100,25 @@ function Navbar() {
                     
                 </Toolbar>
             </AppBar>
-        </React.Fragment>
+            <Box component="nav">
+                <Drawer
+                container={container}
+                variant="temporary" 
+                open={mobileOpen}
+                onClose={handleDrawerToggle}
+                ModalProps={{
+                    keepMounted: true, //Better open performance on mobile.
+                }}
+                sx={{
+                    display: { xs: 'block', sm: 'none' },
+                    '& .MuiDrawer-paper': { boxSizing: 'border-box',
+                    width: drawerWidth, bgcolor: 'primary.main' },
+                }} //Darkens rests of the pages when drawer is open.
+                >
+                    {drawer}
+                </Drawer>
+            </Box>
+        </Box>
     );
 }
 
